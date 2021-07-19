@@ -111,6 +111,20 @@ const MetricLineGraphs = props => {
           },
         ]}
       />
+      <MetricLineGraph
+        pinned={props.pinned}
+        setPinned={props.setPinned}
+        selectedBuildId={props.selectedBuildId}
+        setSelectedBuildId={props.setSelectedBuildId}
+        metrics={[
+          {
+            abbreviation: 'CLS',
+            label: 'Cumulative Layout Shift',
+            statistics: stats('audit_cumulative-layout-shift_median'),
+            scoreLevels: SCORE_LEVEL_METRIC_THRESHOLDS['cumulative-layout-shift'],
+          },
+        ]}
+      />
     </Fragment>
   );
 };
@@ -139,6 +153,12 @@ const MetricDistributionGraphs = props => {
         label={'Time to Interactive'}
         statistics={stats('audit_interactive_median')}
         scoreLevels={SCORE_LEVEL_METRIC_THRESHOLDS['interactive']}
+      />
+      <MetricDistributionGraph
+        abbreviation={'CLS'}
+        label={'Cumulative Layout Shift'}
+        statistics={stats('audit_cumulative-layout-shift_median')}
+        scoreLevels={SCORE_LEVEL_METRIC_THRESHOLDS['cumulative-layout-shift']}
       />
     </Fragment>
   );
